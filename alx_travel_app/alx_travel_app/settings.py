@@ -16,7 +16,7 @@ import environ
 # Initialize environment variables
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
+    #DEBUG=(bool, False)
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +32,7 @@ environ.Env.read_env(env_file=str(BASE_DIR / '.env'))
 SECRET_KEY = 'django-insecure-_m2n#r6z4v54njnz)*x5(c4=$9j_lii89nj)488n+paebg)t8a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -87,23 +87,23 @@ WSGI_APPLICATION = 'alx_travel_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST', default='localhost'),
-        'PORT': env('DB_PORT', default='3306'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': env('DB_NAME'),
+#        'USER': env('DB_USER'),
+#        'PASSWORD': env('DB_PASSWORD'),
+#        'HOST': env('DB_HOST', default='localhost'),
+#        'PORT': env('DB_PORT', default='3306'),
+#    }
+#}
 
 
 # Password validation

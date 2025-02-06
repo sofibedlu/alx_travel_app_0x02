@@ -38,3 +38,19 @@ class Review(models.Model):
 
     def __str__(self):
         return f'Review {self.review_id} for {self.listing.name}'
+    
+class Payment(models.Model):
+    booking = models.OneToOneField(
+        Booking, on_delete=models.CASCADE, related_name='payment'
+    )
+    transaction_id = models.CharField(max_length=100, null=True, blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(
+        max_length=10,
+        choices=[('pending', 'Pending'), ('completed', 'Completed'), ('failed', 'Failed')],
+        default='pending'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Payment for booking {self.booking.booking_id}'
